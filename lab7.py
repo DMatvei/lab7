@@ -1,4 +1,3 @@
-import math
 import matplotlib.pyplot as plt
 import numpy as np
  
@@ -7,11 +6,11 @@ def f(x):
     return f
  
 def dfdx(x):
-    dfdx = 3 / (np.log(10) * (3 * x - 1)) - 2 * np.exp(2 * x - 1)
+    dfdx = 3 / (np.log(10) * (3 * x - 1)) + 2 * np.exp(2 * x - 1)
     return dfdx
  
 def d2fdx2(x):
-    d2fdx2 = - 9 / (np.log(10) * (3 * x - 1) ** 2) - 4 * np.exp(2 * x - 1)
+    d2fdx2 = - 9 / (np.log(10) * (3 * x - 1) ** 2) + 4 * np.exp(2 * x - 1)
     return d2fdx2
  
 def chord_tangent_method(left, right, epsilon):
@@ -46,22 +45,19 @@ def chord_tangent_method(left, right, epsilon):
  
 epsilon = 0.0001
  
-x_a = np.linspace(0, 2, 200)
+x_a = np.linspace(0.35, 1, 200)
 plt.plot(x_a, np.log10(3 * x_a - 1), label='y=log10(3 * x - 1)')
-plt.plot(x_a, np.exp(2 * x_a - 1), label='y=exp(2 * x - 1)')
+plt.plot(x_a, - np.exp(2 * x_a - 1), label='y=-exp(2 * x - 1)')
  
 plt.legend()
  
 print(f'Корни уравнения log10(3 * x - 1) + exp(2 * x - 1) = 0 с точностью epsilon = {epsilon}:')
  
 print(f'Первый корень:')
-x_c, x_t = chord_tangent_method(0.25, 0.75, epsilon)
+x_c, x_t = chord_tangent_method(0.35, 0.75, epsilon)
 print(f'Приближение по методу касательных: {x_t}')
-print(f'Приближение по методу хорд: {x_c}')
+
  
-print(f'Второй корень:')
-x_c, x_t = chord_tangent_method(1.25, 1.5, epsilon)
-print(f'Приближение по методу касательных: {x_t}')
-print(f'Приближение по методу хорд: {x_c}')
+
  
 plt.show()
