@@ -54,7 +54,7 @@ plt.legend()
 print(f'Корни уравнения log10(3 * x - 1) + exp(2 * x - 1) = 0 с точностью epsilon = {epsilon}:')
  
 print(f'Первый корень:')
-x_c, x_t = chord_tangent_method(0.35, 0.75, epsilon)
+x_c, x_t = chord_tangent_method(0.35, 0.5, epsilon)
 print(f'Приближение по методу касательных: {x_t}')
 print(f'Приближение по методу хорд: {x_c}')
  
